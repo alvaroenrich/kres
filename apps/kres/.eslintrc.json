@@ -1,0 +1,75 @@
+{
+  "extends": ["../../.eslintrc.json"],
+  "ignorePatterns": ["!**/*"],
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "extends": [
+        "plugin:@nx/angular",
+        "plugin:@angular-eslint/template/process-inline-templates"
+      ],
+      "rules": {
+        "@angular-eslint/no-empty-lifecycle-method": "error",
+        "prefer-const": 2,
+        "no-console": 2,
+        "no-unused-vars": "error",
+        "@angular-eslint/pipe-prefix": [
+          "error",
+          {
+            "prefixes": ["kres"]
+          }
+        ],
+        "@angular-eslint/directive-selector": [
+          "error",
+          {
+            "type": "attribute",
+            "prefix": "kres",
+            "style": "camelCase"
+          }
+        ],
+        "@angular-eslint/component-selector": [
+          "error",
+          {
+            "type": "element",
+            "prefix": "kres",
+            "style": "kebab-case"
+          }
+        ],
+        "@typescript-eslint/naming-convention": [
+          "error",
+          {
+            "selector": "variable",
+            "format": ["strictCamelCase", "UPPER_CASE"]
+          },
+          {
+            "selector": "class",
+            "format": ["StrictPascalCase"],
+            "prefix": ["KRes"]
+          },
+          {
+            "selector": "interface",
+            "format": ["StrictPascalCase"],
+            "prefix": ["IKRes"]
+          },
+          {
+            "selector": "typeAlias",
+            "format": ["StrictPascalCase"],
+            "prefix": ["KRes"],
+            "suffix": ["Type"]
+          },
+          {
+            "selector": "enum",
+            "format": ["StrictPascalCase"],
+            "prefix": ["KRes"],
+            "suffix": ["Enum"]
+          }
+        ]
+      }
+    },
+    {
+      "files": ["*.html"],
+      "extends": ["plugin:@nx/angular-template"],
+      "rules": {}
+    }
+  ]
+}
