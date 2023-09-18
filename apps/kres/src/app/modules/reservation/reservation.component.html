@@ -1,2 +1,95 @@
-{{'kreservations.home.welcome' | translate }}
+<div class="kreservations-reservations-container">
+    {{'kreservations.reservations.introduction' | translate }}
+    <div class="kreservations-reservations__form-row">
+        <div class="kreservations-reservations__form-element">
+            <label>
+                {{'kreservations.reservations.form.username' | translate}}
+            </label>
+            <input
+                [ngClass]="{'kreservations-reservations__form-element--error': getControl('userName').errors && getControl('userName').touched}"
+                [placeholder]="'kreservations.reservations.form.username' | translate"
+                [formControl]="getControl('userName')"
+                type="text"
+            />
+        </div>
+        <div class="kreservations-reservations__form-element">
+            <label>
+                {{'kreservations.reservations.form.email' | translate}}
+            </label>
+            <input
+                [ngClass]="{'kreservations-reservations__form-element--error': getControl('email').errors && getControl('email').touched}"
+                [placeholder]="'kreservations.reservations.form.email' | translate"
+                [formControl]="getControl('email')"
+                type="text"
+            />
+        </div>
+        <div class="kreservations-reservations__form-element">
+            <label>
+                {{'kreservations.reservations.form.phone' | translate}}
+            </label>
+            <input
+                [ngClass]="{'kreservations-reservations__form-element--error': getControl('phone').errors && getControl('phone').touched}"
+                [placeholder]="'kreservations.reservations.form.phone' | translate"
+                [formControl]="getControl('phone')"
+                type="text"
+            />
+        </div>
+    </div>
+    <div class="kreservations-reservations__form-row">
+        <div class="kreservations-reservations__form-element">
+            <label>
+                {{'kreservations.reservations.form.people' | translate}}
+            </label>
+            <input
+                [ngClass]="{'kreservations-reservations__form-element--error': getControl('people').errors && getControl('people').touched}"
+                [placeholder]="'kreservations.reservations.form.people.placeholder' | translate"
+                [formControl]="getControl('people')"
+                type="number"
+            />
+        </div>
+        <div class="kreservations-reservations__form-element">
+            <label>
+                {{'kreservations.reservations.form.children' | translate}}
+            </label>
+            <input
+                [ngClass]="{'kreservations-reservations__form-element--error': getControl('children').errors && getControl('children').touched}"
+                [placeholder]="'kreservations.reservations.form.children' | translate"
+                [formControl]="getControl('children')"
+                type="number"
+            />
+        </div>
+        <div class="kreservations-reservations__form-element">
+            <label>
+                {{'kreservations.reservations.form.smokers' | translate}}
+            </label>
+            <input
+                [placeholder]="'kreservations.reservations.form.smokers' | translate"
+                [formControl]="getControl('smokers')"
+                type="checkbox"
+            />
+        </div>
+        <div class="kreservations-reservations__form-element">
+            <label>
+                {{'kreservations.reservations.form.birthday' | translate}}
+            </label>
+            <input
+                [placeholder]="'kreservations.reservations.form.birthday' | translate"
+                [formControl]="getControl('birthday')"
+                type="checkbox"
+            />
+        </div>
+    </div>
+    <div class="kreservations-reservations__form-row">
+        <div class="kreservations-reservations__form-element">
+            <label>
+                {{'kreservations.reservations.form.region' | translate}}
+            </label>
+            <select [ngModel]="region" (ngModelChange)="updateRegion($event)">
+                <option [value]="item.id" *ngFor="let item of availableRegions" [disabled]="item.disabled">{{item.name}}</option>
+            </select>
+        </div>
+    </div>
+</div>
+{{form.value | json}}
+<button [disabled]="!form.valid" (click)="submitForm()">submit reservation</button>
 

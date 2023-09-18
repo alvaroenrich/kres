@@ -1,0 +1,18 @@
+.kreservations-home {
+    .kreservations-home__header {
+        padding: 15px;
+        box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+        font-size: 30px;
+        display: flex;
+        img {
+            margin-right: 15px;
+            max-height: 40px;
+            margin-left: auto;
+        }
+        span {
+            margin-top: auto;
+            margin-bottom: auto;
+            margin-right: auto;
+        }
+    }
+}

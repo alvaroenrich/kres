@@ -1,3 +1,13 @@
 {
-    "kreservations.home.welcome": "Welcome To Kafe Reservations page"
+    "kreservations.home.welcome": "Welcome To Kafe Reservations page",
+    "kreservations.reservations.introduction": "Please fill in the required fields to submit the reservation",
+    "kreservations.reservations.form.username": "Username",
+    "kreservations.reservations.form.email": "Email",
+    "kreservations.reservations.form.phone": "Phone number",
+    "kreservations.reservations.form.region": "Region",
+    "kreservations.reservations.form.people": "Size of the reservation (including children)",
+    "kreservations.reservations.form.people.placeholder": "Size",
+    "kreservations.reservations.form.children": "Children",
+    "kreservations.reservations.form.smokers": "Smokers",
+    "kreservations.reservations.form.birthday": "Birthday"
 }

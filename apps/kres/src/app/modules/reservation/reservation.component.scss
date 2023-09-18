@@ -1,0 +1,25 @@
+.kreservations-reservations-container {
+    background-color: yellow;
+    display: flex;
+    flex-direction: column;
+    .kreservations-reservations__form-row {
+        display: flex;
+        flex-direction: row;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        label::after {
+            content: '*';
+            color: red;
+        }
+        .kreservations-reservations__form-element {
+            padding-left: 5px;
+            padding-right: 5px;
+            display: flex;
+            flex-direction: column;
+        }
+        .kreservations-reservations__form-element--error {
+            border: 2px solid red;
+        }
+    }
+
+}

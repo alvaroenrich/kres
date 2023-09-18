@@ -8,6 +8,11 @@ export const KRES_HOME_ROUTES: Routes = [
     component: KResHomeComponent,
     children: [
       {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'reservation',
+      },
+      {
         path: 'reservation',
         loadChildren: () => import('../reservation/reservation.module').then((m) => m.KResReservationModule),
       },
