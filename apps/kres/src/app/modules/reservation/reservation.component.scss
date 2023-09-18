@@ -1,5 +1,4 @@
 .kreservations-reservations-container {
-    background-color: yellow;
     display: flex;
     flex-direction: column;
     .kreservations-reservations__form-row {
@@ -7,9 +6,11 @@
         flex-direction: row;
         padding-top: 10px;
         padding-bottom: 10px;
-        label::after {
-            content: '*';
-            color: red;
+        label {
+            &.required-field::after {
+                content: '*';
+                color: red;
+            }
         }
         .kreservations-reservations__form-element {
             padding-left: 5px;

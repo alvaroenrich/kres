@@ -2,7 +2,7 @@
     {{'kreservations.reservations.introduction' | translate }}
     <div class="kreservations-reservations__form-row">
         <div class="kreservations-reservations__form-element">
-            <label>
+            <label class="required-field">
                 {{'kreservations.reservations.form.username' | translate}}
             </label>
             <input
@@ -13,7 +13,7 @@
             />
         </div>
         <div class="kreservations-reservations__form-element">
-            <label>
+            <label class="required-field">
                 {{'kreservations.reservations.form.email' | translate}}
             </label>
             <input
@@ -24,7 +24,7 @@
             />
         </div>
         <div class="kreservations-reservations__form-element">
-            <label>
+            <label class="required-field">
                 {{'kreservations.reservations.form.phone' | translate}}
             </label>
             <input
@@ -37,7 +37,7 @@
     </div>
     <div class="kreservations-reservations__form-row">
         <div class="kreservations-reservations__form-element">
-            <label>
+            <label class="required-field">
                 {{'kreservations.reservations.form.people' | translate}}
             </label>
             <input
@@ -48,7 +48,7 @@
             />
         </div>
         <div class="kreservations-reservations__form-element">
-            <label>
+            <label class="required-field">
                 {{'kreservations.reservations.form.children' | translate}}
             </label>
             <input
@@ -81,7 +81,7 @@
     </div>
     <div class="kreservations-reservations__form-row">
         <div class="kreservations-reservations__form-element">
-            <label>
+            <label class="required-field">
                 {{'kreservations.reservations.form.region' | translate}}
             </label>
             <select [ngModel]="region" (ngModelChange)="updateRegion($event)">
@@ -90,6 +90,5 @@
         </div>
     </div>
 </div>
-{{form.value | json}}
 <button [disabled]="!form.valid" (click)="submitForm()">submit reservation</button>
 
