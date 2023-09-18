@@ -1,15 +1,30 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router';
 import { KResAppComponent } from './app.component';
-import { appRoutes } from './app.routes';
-import { KResNxWelcomeComponent } from './nx-welcome.component';
+import { KResAppRoutingModule } from './app-routing.module';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import {HttpClientModule, HttpClient} from '@angular/common/http';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
-  declarations: [KResAppComponent, KResNxWelcomeComponent],
+  declarations: [KResAppComponent],
   imports: [
+    HttpClientModule,
     BrowserModule,
-    RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' }),
+    KResAppRoutingModule,
+    TranslateModule.forRoot({
+      loader: {
+          provide: TranslateLoader,
+          useFactory: HttpLoaderFactory,
+          deps: [HttpClient]
+      },
+      defaultLanguage: 'en'
+    }),
   ],
   providers: [],
   bootstrap: [KResAppComponent],
