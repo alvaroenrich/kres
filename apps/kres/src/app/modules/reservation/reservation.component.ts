@@ -25,7 +25,8 @@ export class KResReservationComponent implements OnInit, OnDestroy {
     children: new FormControl<number>(null, [Validators.required, KResCustomValidators.zeroOrLargerNumberValidator]),
     region: new FormControl<number>(null, Validators.required),
     smokers: new FormControl<boolean>(false, Validators.required),
-    birthday: new FormControl<boolean>(false, Validators.required)
+    birthday: new FormControl<boolean>(false, Validators.required),
+    birthdayName: new FormControl<string>(null),
   });
 
   get region(): string {
@@ -58,6 +59,11 @@ export class KResReservationComponent implements OnInit, OnDestroy {
     });
     this.form.get('people').valueChanges.pipe(takeUntil(this.destroy$)).subscribe(() => {
       this.verifyRegionIsStillValid();
+    });
+    this.form.get('birthday').valueChanges.pipe(takeUntil(this.destroy$)).subscribe(val => {
+      if (!val) {
+        this.form.get('birthdayName').setValue(null);
+      }
     });
   }
 

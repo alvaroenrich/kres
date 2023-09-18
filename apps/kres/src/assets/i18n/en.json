@@ -9,5 +9,6 @@
     "kreservations.reservations.form.people.placeholder": "Size",
     "kreservations.reservations.form.children": "Children",
     "kreservations.reservations.form.smokers": "Smokers",
-    "kreservations.reservations.form.birthday": "Birthday"
+    "kreservations.reservations.form.birthday": "Birthday",
+    "kreservations.reservations.form.birthdayName": "Birthday person's name"
 }

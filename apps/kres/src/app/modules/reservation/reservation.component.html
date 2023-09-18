@@ -78,6 +78,16 @@
                 type="checkbox"
             />
         </div>
+        <div class="kreservations-reservations__form-element" *ngIf="getControl('birthday').value">
+            <label>
+                {{'kreservations.reservations.form.birthdayName' | translate}}
+            </label>
+            <input
+                [placeholder]="'kreservations.reservations.form.birthdayName' | translate"
+                [formControl]="getControl('birthdayName')"
+                type="text"
+            />
+        </div>
     </div>
     <div class="kreservations-reservations__form-row">
         <div class="kreservations-reservations__form-element">
