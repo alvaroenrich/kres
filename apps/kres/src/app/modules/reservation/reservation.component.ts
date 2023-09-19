@@ -104,7 +104,7 @@ export class KResReservationComponent implements OnInit, AfterViewInit, OnDestro
   }
 
   constructor(private router: Router, private reservationsService: KResReservationService, private cdr: ChangeDetectorRef) {
-    this.fieldToFocus = this.router.getCurrentNavigation()?.extras?.state['focusField'];
+    this.fieldToFocus = this.router.getCurrentNavigation()?.extras?.state?.['focusField'];
   }
 
   ngOnInit(): void {
@@ -198,7 +198,7 @@ export class KResReservationComponent implements OnInit, AfterViewInit, OnDestro
 
   public submitForm(): void {
     this.reservationsService.reservationData = this.getCurrentReservationData();
-    this.router.navigateByUrl('/home/confirmation');
+    this.router.navigateByUrl('/confirmation');
   }
 
   public modifyDate(): void {

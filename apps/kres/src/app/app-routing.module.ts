@@ -8,11 +8,19 @@ const KRES_APP_ROUTES: Routes = [
       {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'home',
+        redirectTo: 'reservation',
       },
       {
-        path: 'home',
-        loadChildren: () => import('./modules/home/home.module').then((m) => m.KResHomeModule),
+        path: 'reservation',
+        loadChildren: () => import('./modules/reservation/reservation.module').then((m) => m.KResReservationModule),
+      },
+      {
+        path: 'confirmation',
+        loadChildren: () => import('./modules/confirmation/confirmation.module').then((m) => m.KResConfirmationModule),
+      },
+      {
+        path: 'success',
+        loadChildren: () => import('./modules/success/success.module').then((m) => m.KResSuccessModule),
       },
     ],
   },

@@ -29,5 +29,19 @@
     "kreservations.confirmation.form.birthday": "Birthday",
     "kreservations.confirmation.form.birthdayName": "Birthday person's name",
     "kreservations.confirmation.yes": "Yes",
-    "kreservations.confirmation.no": "No"
+    "kreservations.confirmation.no": "No",
+    "kreservations.success.introduction": "Your reservation was successfully made! See you soon at KAFE RESTAURANT!",
+    "kreservations.success.form.date": "Date",
+    "kreservations.success.form.time": "Time",
+    "kreservations.success.form.username": "Username",
+    "kreservations.success.form.email": "Email",
+    "kreservations.success.form.phone": "Phone number",
+    "kreservations.success.form.region": "Region",
+    "kreservations.success.form.people": "Size of the reservation",
+    "kreservations.success.form.children": "Children",
+    "kreservations.success.form.smokers": "Smokers",
+    "kreservations.success.form.birthday": "Birthday",
+    "kreservations.success.form.birthdayName": "Birthday person's name",
+    "kreservations.success.yes": "Yes",
+    "kreservations.success.no": "No"
 }

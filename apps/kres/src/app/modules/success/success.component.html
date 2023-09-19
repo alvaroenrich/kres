@@ -1,2 +1,46 @@
-{{'kreservations.home.welcome' | translate }}
+<div class="kreservations-success-container">
+    <div class="kreservations-success-introduction">{{'kreservations.success.introduction' | translate }}</div>
+    <div class="kreservations-success-details">
+        <div class="kreservations-success-details-field">
+            <span class="kreservations-success-details-field__title">{{'kreservations.success.form.date' | translate}}:</span>
+            <span class="kreservations-success-details-field__value">&nbsp;{{data?.date | date:'dd/MM/yyyy, h:mm a'}}</span>
+        </div>
+        <div class="kreservations-success-details-field">
+            <span class="kreservations-success-details-field__title">{{'kreservations.success.form.username' | translate}}:</span>
+            <span class="kreservations-success-details-field__value">&nbsp;{{data?.username}}</span>
+        </div>
+        <div class="kreservations-success-details-field">
+            <span class="kreservations-success-details-field__title">{{'kreservations.success.form.email' | translate}}:</span>
+            <span class="kreservations-success-details-field__value">&nbsp;{{data?.email}}</span>
+        </div>
+        <div class="kreservations-success-details-field">
+            <span class="kreservations-success-details-field__title">{{'kreservations.success.form.phone' | translate}}:</span>
+            <span class="kreservations-success-details-field__value">&nbsp;{{data?.phone}}</span>
+        </div>
+        <div class="kreservations-success-details-field">
+            <span class="kreservations-success-details-field__title">{{'kreservations.success.form.region' | translate}}:</span>
+            <span class="kreservations-success-details-field__value">&nbsp;{{data?.region.name}}</span>
+        </div>
+        <div class="kreservations-success-details-field">
+            <span class="kreservations-success-details-field__title">{{'kreservations.success.form.people' | translate}}:</span>
+            <span class="kreservations-success-details-field__value">&nbsp;{{data?.people}}</span>
+        </div>
+        <div class="kreservations-success-details-field">
+            <span class="kreservations-success-details-field__title">{{'kreservations.success.form.children' | translate}}:</span>
+            <span class="kreservations-success-details-field__value">&nbsp;{{data?.children}}</span>
+        </div>
+        <div class="kreservations-success-details-field">
+            <span class="kreservations-success-details-field__title">{{'kreservations.success.form.smokers' | translate}}:</span>
+            <span class="kreservations-success-details-field__value">&nbsp;{{(data?.smokers ? 'kreservations.success.yes' : 'kreservations.success.no') | translate}}</span>
+        </div>
+        <div class="kreservations-success-details-field">
+            <span class="kreservations-success-details-field__title">{{'kreservations.success.form.birthday' | translate}}:</span>
+            <span class="kreservations-success-details-field__value">&nbsp;{{(data?.birthday ? 'kreservations.success.yes' : 'kreservations.success.no') | translate}}</span>
+        </div>
+        <div class="kreservations-success-details-field" *ngIf="data?.birthday">
+            <span class="kreservations-success-details-field__title">{{'kreservations.success.form.birthdayName' | translate}}:</span>
+            <span class="kreservations-success-details-field__value">&nbsp;{{data?.birthdayName}}</span>
+        </div>
+    </div>
+</div>
 

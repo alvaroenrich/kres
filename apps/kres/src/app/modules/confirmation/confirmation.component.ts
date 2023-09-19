@@ -18,6 +18,10 @@ export class KResConfirmationComponent {
   constructor(private router: Router, private reservationsService: KResReservationService) {}
 
   public editField(controlName: string): void {
-    this.router.navigateByUrl('/home/reservation', {state: {focusField: controlName}});
+    this.router.navigateByUrl('/reservation', {state: {focusField: controlName}});
+  }
+
+  public confirmReservation(): void {
+    this.router.navigateByUrl('/success');
   }
 }

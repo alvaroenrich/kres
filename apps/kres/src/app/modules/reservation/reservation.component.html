@@ -136,7 +136,7 @@
         </div>
     </div>
 </div>
-<button [disabled]="!form.valid || suggestedDate" (click)="submitForm()">submit reservation</button>
+<button [disabled]="!form.valid || suggestedDate || noAvailableSuggestionsForInvalidDate" (click)="submitForm()">submit reservation</button>
 
 <div *ngIf="suggestedDate" class="kreservations-reservations-disclaimer kreservations-reservations-disclaimer--info">
     {{'kreservations.reservations.suggestion' | translate}}{{suggestedDate | date:'dd/MM/yyyy, h:mm a'}}
