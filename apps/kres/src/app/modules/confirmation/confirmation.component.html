@@ -2,6 +2,11 @@
     <b>{{'kreservations.confirmation.introduction' | translate }}</b>
     <div class="kreservations-confirmation-details">
         <div class="kreservations-confirmation-details-field">
+            <span class="kreservations-confirmation-details-field__title">{{'kreservations.confirmation.form.date' | translate}}:</span>
+            <span class="kreservations-confirmation-details-field__value">&nbsp;{{data?.date | date:'dd/MM/yyyy, h:mm a'}}</span>
+            <button (click)="editField('date')">Edit field</button>
+        </div>
+        <div class="kreservations-confirmation-details-field">
             <span class="kreservations-confirmation-details-field__title">{{'kreservations.confirmation.form.username' | translate}}:</span>
             <span class="kreservations-confirmation-details-field__value">&nbsp;{{data?.username}}</span>
             <button (click)="editField('username')">Edit field</button>

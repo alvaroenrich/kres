@@ -3,6 +3,33 @@
     <div class="kreservations-reservations__form-row">
         <div class="kreservations-reservations__form-element">
             <label class="required-field">
+                {{'kreservations.reservations.form.date' | translate}}
+            </label>
+            <input #dateInput
+                [ngClass]="{'kreservations-reservations__form-element--error': getControl('date').errors && getControl('date').touched}"
+                [placeholder]="'kreservations.reservations.form.date' | translate"
+                [formControl]="getControl('date')"
+                [inputMask]="dateMask"
+                type="text"
+            />
+        </div>
+        <div class="kreservations-reservations__form-row">
+            <div class="kreservations-reservations__form-element">
+                <label class="required-field">
+                    {{'kreservations.reservations.form.time' | translate}}
+                </label>
+                <select
+                    [ngModel]="time"
+                    (ngModelChange)="updateTime($event)"
+                    [disabled]="!timeFieldEnabled">
+                    <option [value]="item" *ngFor="let item of availableTimeSlots">{{item}}</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="kreservations-reservations__form-row">
+        <div class="kreservations-reservations__form-element">
+            <label class="required-field">
                 {{'kreservations.reservations.form.username' | translate}}
             </label>
             <input #userNameInput

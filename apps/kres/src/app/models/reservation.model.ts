@@ -3,6 +3,7 @@ export interface IKResReservationRegionData {
     name: string;
 }
 export interface IKResReservationData {
+    date: Date;
     username: string;
     email: string;
     phone: string;
