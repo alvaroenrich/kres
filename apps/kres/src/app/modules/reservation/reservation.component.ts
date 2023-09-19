@@ -1,9 +1,12 @@
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { KResRestaurant } from '../../models/restaurant.model';
 import { KRES_KAFE_CONFIG } from './kafe-specifications/kafe-config.constants';
 import { KResCustomValidators } from './reservation.validators';
 import { Subject, takeUntil } from 'rxjs';
+import { Router } from '@angular/router';
+import { KResReservationService } from '../../services/reservation.service';
+import { IKResReservationData } from '../../models/reservation.model';
 
 @Component({
   selector: 'kres-reservation',
@@ -11,11 +14,23 @@ import { Subject, takeUntil } from 'rxjs';
   styleUrls: ['./reservation.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class KResReservationComponent implements OnInit, OnDestroy {
+export class KResReservationComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private destroy$: Subject<void> = new Subject();
 
   private restaurant: KResRestaurant = new KResRestaurant(KRES_KAFE_CONFIG);
+
+  private fieldToFocus: string;
+
+  @ViewChild('userNameInput') userNameInput: ElementRef<HTMLInputElement>;
+  @ViewChild('emailInput') emailInput: ElementRef<HTMLInputElement>;
+  @ViewChild('phoneInput') phoneInput: ElementRef<HTMLInputElement>;
+  @ViewChild('peopleInput') peopleInput: ElementRef<HTMLInputElement>;
+  @ViewChild('childrenInput') childrenInput: ElementRef<HTMLInputElement>;
+  @ViewChild('smokersInput') smokersInput: ElementRef<HTMLInputElement>;
+  @ViewChild('birthdayInput') birthdayInput: ElementRef<HTMLInputElement>;
+  @ViewChild('birthdayNameInput') birthdayNameInput: ElementRef<HTMLInputElement>;
+  @ViewChild('regionSelect') regionSelect: ElementRef<HTMLSelectElement>;
 
   public form: FormGroup = new FormGroup({
     userName: new FormControl<string>(null, Validators.required),
@@ -50,7 +65,24 @@ export class KResReservationComponent implements OnInit, OnDestroy {
     })
   }
 
+  constructor(private router: Router, private reservationsService: KResReservationService) {
+    this.fieldToFocus = this.router.getCurrentNavigation()?.extras?.state['focusField'];
+  }
+
   ngOnInit(): void {
+    if (this.reservationsService.reservationData) {
+      this.form.setValue({
+        userName: this.reservationsService.reservationData.username,
+        email: this.reservationsService.reservationData.email,
+        phone: this.reservationsService.reservationData.phone,
+        people: this.reservationsService.reservationData.people,
+        children: this.reservationsService.reservationData.children,
+        region: this.reservationsService.reservationData.region.id,
+        smokers: this.reservationsService.reservationData.smokers,
+        birthday: this.reservationsService.reservationData.birthday,
+        birthdayName: this.reservationsService.reservationData.birthdayName,
+      });
+    }
     this.form.get('smokers').valueChanges.pipe(takeUntil(this.destroy$)).subscribe(() => {
       this.verifyRegionIsStillValid();
     });
@@ -65,6 +97,39 @@ export class KResReservationComponent implements OnInit, OnDestroy {
         this.form.get('birthdayName').setValue(null);
       }
     });
+  }
+  
+
+  ngAfterViewInit(): void {
+    switch (this.fieldToFocus) {
+      case 'username':
+        this.userNameInput.nativeElement.focus();
+        break;
+      case 'email':
+        this.emailInput.nativeElement.focus();
+        break;
+      case 'phone':
+        this.phoneInput.nativeElement.focus();
+        break;
+      case 'people':
+        this.peopleInput.nativeElement.focus();
+        break;
+      case 'children':
+        this.childrenInput.nativeElement.focus();
+        break;
+      case 'region':
+        this.regionSelect.nativeElement.focus();
+        break;
+      case 'smokers':
+        this.smokersInput.nativeElement.focus();
+        break;
+      case 'birthday':
+        this.birthdayInput.nativeElement.focus();
+        break;
+      case 'birthdayName':
+        this.birthdayNameInput.nativeElement.focus();
+        break;
+    }
   }
 
   ngOnDestroy(): void {
@@ -86,7 +151,22 @@ export class KResReservationComponent implements OnInit, OnDestroy {
   }
 
   public submitForm(): void {
-    alert(JSON.stringify(this.form.value));
+    const reservationData: IKResReservationData = {
+      username: this.form.get('userName').value,
+      email: this.form.get('email').value,
+      phone: this.form.get('phone').value,
+      people: this.form.get('people').value,
+      children: this.form.get('children').value,
+      region: {
+        id: this.form.get('region').value,
+        name: this.availableRegions.find(r => r.id === this.form.get('region').value)?.name,
+      },
+      smokers: this.form.get('smokers').value,
+      birthday: this.form.get('birthday').value,
+      birthdayName: this.form.get('birthdayName').value,
+    };
+    this.reservationsService.reservationData = reservationData;
+    this.router.navigateByUrl('/home/confirmation');
   }
 
   /**

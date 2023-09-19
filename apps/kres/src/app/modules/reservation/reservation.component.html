@@ -5,7 +5,7 @@
             <label class="required-field">
                 {{'kreservations.reservations.form.username' | translate}}
             </label>
-            <input
+            <input #userNameInput
                 [ngClass]="{'kreservations-reservations__form-element--error': getControl('userName').errors && getControl('userName').touched}"
                 [placeholder]="'kreservations.reservations.form.username' | translate"
                 [formControl]="getControl('userName')"
@@ -16,7 +16,7 @@
             <label class="required-field">
                 {{'kreservations.reservations.form.email' | translate}}
             </label>
-            <input
+            <input #emailInput
                 [ngClass]="{'kreservations-reservations__form-element--error': getControl('email').errors && getControl('email').touched}"
                 [placeholder]="'kreservations.reservations.form.email' | translate"
                 [formControl]="getControl('email')"
@@ -27,7 +27,7 @@
             <label class="required-field">
                 {{'kreservations.reservations.form.phone' | translate}}
             </label>
-            <input
+            <input #phoneInput
                 [ngClass]="{'kreservations-reservations__form-element--error': getControl('phone').errors && getControl('phone').touched}"
                 [placeholder]="'kreservations.reservations.form.phone' | translate"
                 [formControl]="getControl('phone')"
@@ -40,7 +40,7 @@
             <label class="required-field">
                 {{'kreservations.reservations.form.people' | translate}}
             </label>
-            <input
+            <input #peopleInput
                 [ngClass]="{'kreservations-reservations__form-element--error': getControl('people').errors && getControl('people').touched}"
                 [placeholder]="'kreservations.reservations.form.people.placeholder' | translate"
                 [formControl]="getControl('people')"
@@ -51,7 +51,7 @@
             <label class="required-field">
                 {{'kreservations.reservations.form.children' | translate}}
             </label>
-            <input
+            <input #childrenInput
                 [ngClass]="{'kreservations-reservations__form-element--error': getControl('children').errors && getControl('children').touched}"
                 [placeholder]="'kreservations.reservations.form.children' | translate"
                 [formControl]="getControl('children')"
@@ -63,6 +63,7 @@
                 {{'kreservations.reservations.form.smokers' | translate}}
             </label>
             <input
+                #smokersInput
                 [placeholder]="'kreservations.reservations.form.smokers' | translate"
                 [formControl]="getControl('smokers')"
                 type="checkbox"
@@ -72,7 +73,7 @@
             <label>
                 {{'kreservations.reservations.form.birthday' | translate}}
             </label>
-            <input
+            <input #birthdayInput
                 [placeholder]="'kreservations.reservations.form.birthday' | translate"
                 [formControl]="getControl('birthday')"
                 type="checkbox"
@@ -83,6 +84,7 @@
                 {{'kreservations.reservations.form.birthdayName' | translate}}
             </label>
             <input
+                #birthdayNameInput
                 [placeholder]="'kreservations.reservations.form.birthdayName' | translate"
                 [formControl]="getControl('birthdayName')"
                 type="text"
@@ -94,7 +96,7 @@
             <label class="required-field">
                 {{'kreservations.reservations.form.region' | translate}}
             </label>
-            <select [ngModel]="region" (ngModelChange)="updateRegion($event)">
+            <select [ngModel]="region" (ngModelChange)="updateRegion($event)" #regionSelect>
                 <option [value]="item.id" *ngFor="let item of availableRegions" [disabled]="item.disabled">{{item.name}}</option>
             </select>
         </div>

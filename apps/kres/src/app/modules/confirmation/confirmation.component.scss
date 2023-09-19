@@ -1,0 +1,22 @@
+.kreservations-confirmation-container {
+    display: flex;
+    flex-direction: column;
+    .kreservations-confirmation-details {
+        .kreservations-confirmation-details-field {
+            flex-direction: row;
+            padding-top: 10px;
+            &__title {
+                font-weight: bold;
+                text-decoration: underline;
+            }
+            &__value {
+                color: #828385;
+                font-weight: bold;
+                font-size: 18px;
+            }
+            button {
+                margin-left: 15px;
+            }
+        }
+    }
+}

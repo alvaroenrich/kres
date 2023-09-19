@@ -1,2 +1,51 @@
-{{'kreservations.home.welcome' | translate }}
+<div class="kreservations-confirmation-container">
+    <b>{{'kreservations.confirmation.introduction' | translate }}</b>
+    <div class="kreservations-confirmation-details">
+        <div class="kreservations-confirmation-details-field">
+            <span class="kreservations-confirmation-details-field__title">{{'kreservations.confirmation.form.username' | translate}}:</span>
+            <span class="kreservations-confirmation-details-field__value">&nbsp;{{data?.username}}</span>
+            <button (click)="editField('username')">Edit field</button>
+        </div>
+        <div class="kreservations-confirmation-details-field">
+            <span class="kreservations-confirmation-details-field__title">{{'kreservations.confirmation.form.email' | translate}}:</span>
+            <span class="kreservations-confirmation-details-field__value">&nbsp;{{data?.email}}</span>
+            <button (click)="editField('email')">Edit field</button>
+        </div>
+        <div class="kreservations-confirmation-details-field">
+            <span class="kreservations-confirmation-details-field__title">{{'kreservations.confirmation.form.phone' | translate}}:</span>
+            <span class="kreservations-confirmation-details-field__value">&nbsp;{{data?.phone}}</span>
+            <button (click)="editField('phone')">Edit field</button>
+        </div>
+        <div class="kreservations-confirmation-details-field">
+            <span class="kreservations-confirmation-details-field__title">{{'kreservations.confirmation.form.region' | translate}}:</span>
+            <span class="kreservations-confirmation-details-field__value">&nbsp;{{data?.region.name}}</span>
+            <button (click)="editField('region')">Edit field</button>
+        </div>
+        <div class="kreservations-confirmation-details-field">
+            <span class="kreservations-confirmation-details-field__title">{{'kreservations.confirmation.form.people' | translate}}:</span>
+            <span class="kreservations-confirmation-details-field__value">&nbsp;{{data?.people}}</span>
+            <button (click)="editField('people')">Edit field</button>
+        </div>
+        <div class="kreservations-confirmation-details-field">
+            <span class="kreservations-confirmation-details-field__title">{{'kreservations.confirmation.form.children' | translate}}:</span>
+            <span class="kreservations-confirmation-details-field__value">&nbsp;{{data?.children}}</span>
+            <button (click)="editField('children')">Edit field</button>
+        </div>
+        <div class="kreservations-confirmation-details-field">
+            <span class="kreservations-confirmation-details-field__title">{{'kreservations.confirmation.form.smokers' | translate}}:</span>
+            <span class="kreservations-confirmation-details-field__value">&nbsp;{{(data?.smokers ? 'kreservations.confirmation.yes' : 'kreservations.confirmation.no') | translate}}</span>
+            <button (click)="editField('smokers')">Edit field</button>
+        </div>
+        <div class="kreservations-confirmation-details-field">
+            <span class="kreservations-confirmation-details-field__title">{{'kreservations.confirmation.form.birthday' | translate}}:</span>
+            <span class="kreservations-confirmation-details-field__value">&nbsp;{{(data?.birthday ? 'kreservations.confirmation.yes' : 'kreservations.confirmation.no') | translate}}</span>
+            <button (click)="editField('birthday')">Edit field</button>
+        </div>
+        <div class="kreservations-confirmation-details-field" *ngIf="data?.birthday">
+            <span class="kreservations-confirmation-details-field__title">{{'kreservations.confirmation.form.birthdayName' | translate}}:</span>
+            <span class="kreservations-confirmation-details-field__value">&nbsp;{{data?.birthdayName}}</span>
+            <button (click)="editField('birthdayName')">Edit field</button>
+        </div>
+    </div>
+</div>
 

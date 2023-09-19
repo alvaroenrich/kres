@@ -1,5 +1,4 @@
 {
-    "kreservations.home.welcome": "Welcome To Kafe Reservations page",
     "kreservations.reservations.introduction": "Please fill in the required fields to submit the reservation",
     "kreservations.reservations.form.username": "Username",
     "kreservations.reservations.form.email": "Email",
@@ -10,5 +9,17 @@
     "kreservations.reservations.form.children": "Children",
     "kreservations.reservations.form.smokers": "Smokers",
     "kreservations.reservations.form.birthday": "Birthday",
-    "kreservations.reservations.form.birthdayName": "Birthday person's name"
+    "kreservations.reservations.form.birthdayName": "Birthday person's name",
+    "kreservations.confirmation.introduction": "Please review the details of your reservation. If there is anything to check, you can click in the edit buttons in order to modify the information. If everything is alright, please click on Continue to complete the reservation",
+    "kreservations.confirmation.form.username": "Username",
+    "kreservations.confirmation.form.email": "Email",
+    "kreservations.confirmation.form.phone": "Phone number",
+    "kreservations.confirmation.form.region": "Region",
+    "kreservations.confirmation.form.people": "Size of the reservation",
+    "kreservations.confirmation.form.children": "Children",
+    "kreservations.confirmation.form.smokers": "Smokers",
+    "kreservations.confirmation.form.birthday": "Birthday",
+    "kreservations.confirmation.form.birthdayName": "Birthday person's name",
+    "kreservations.confirmation.yes": "Yes",
+    "kreservations.confirmation.no": "No"
 }
