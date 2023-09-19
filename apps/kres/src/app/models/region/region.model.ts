@@ -5,6 +5,7 @@ export interface IKResRegionParams {
     maxPeoplePerTable: number;
     id: number;
     name: string;
+    maxReservationsSimultaneously: number;
 }
 
 export class KResRegion {
@@ -13,6 +14,7 @@ export class KResRegion {
     maxPeoplePerTable: number;
     id: number;
     name: string;
+    maxReservationsSimultaneously: number;
 
     constructor(params: IKResRegionParams) {
         this.onlyAdults = params.onlyAdults;
@@ -20,6 +22,7 @@ export class KResRegion {
         this.maxPeoplePerTable = params.maxPeoplePerTable;
         this.id = params.id;
         this.name = params.name;
+        this.maxReservationsSimultaneously = params.maxReservationsSimultaneously;
     }
 
 }

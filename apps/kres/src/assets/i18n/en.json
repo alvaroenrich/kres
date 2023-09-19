@@ -1,5 +1,9 @@
 {
+    "kreservations.reservations.disclaimer": "This screen is performing a call to the mock API every 3 seconds.\r\nIf you want to see what happens if the user selects a time which is not available fill with the following data\r\n\r\n25/07/2023\r\n18:30\r\nMain Hall",
+    "kreservations.reservations.disclaimer-error": "If you want to see what happens if the user selects a time for which there is no available slot in the same shift and region, fill with the following data\r\n\r\n26/07/2023\r\n18:30\r\nRiverside Smoke Free",
     "kreservations.reservations.introduction": "Please fill in the required fields to submit the reservation",
+    "kreservations.reservations.suggestion": "The selected combination of date, time and region is not available. We suggest you this instead: ",
+    "kreservations.reservations.no-suggestion": "The selected combination of date, time and region is not available. We haven't been able to find any other available slot for this shift in the same room. Please change the region or the shift.",
     "kreservations.reservations.form.date": "Date",
     "kreservations.reservations.form.time": "Time",
     "kreservations.reservations.form.username": "Username",

@@ -1,3 +1,10 @@
+<div class="kreservations-reservations-disclaimer kreservations-reservations-disclaimer--info">
+    {{'kreservations.reservations.disclaimer' | translate}}
+</div>
+<div class="kreservations-reservations-disclaimer kreservations-reservations-disclaimer--error">
+    {{'kreservations.reservations.disclaimer-error' | translate}}
+</div>
+
 <div class="kreservations-reservations-container">
     {{'kreservations.reservations.introduction' | translate }}
     <div class="kreservations-reservations__form-row">
@@ -129,5 +136,12 @@
         </div>
     </div>
 </div>
-<button [disabled]="!form.valid" (click)="submitForm()">submit reservation</button>
+<button [disabled]="!form.valid || suggestedDate" (click)="submitForm()">submit reservation</button>
 
+<div *ngIf="suggestedDate" class="kreservations-reservations-disclaimer kreservations-reservations-disclaimer--info">
+    {{'kreservations.reservations.suggestion' | translate}}{{suggestedDate | date:'dd/MM/yyyy, h:mm a'}}
+    <button (click)="modifyDate()">Ok, change!</button>
+</div>
+<div *ngIf="noAvailableSuggestionsForInvalidDate" class="kreservations-reservations-disclaimer kreservations-reservations-disclaimer--error">
+    {{'kreservations.reservations.no-suggestion' | translate}}
+</div>
