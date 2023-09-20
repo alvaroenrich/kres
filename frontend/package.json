@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "start": "nx serve kres",
-    "build": "nx build",
+    "build": "nx run kres:build:production",
     "test": "nx test"
   },
   "private": true,
