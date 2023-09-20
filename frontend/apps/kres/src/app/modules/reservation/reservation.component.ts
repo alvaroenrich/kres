@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, NgZone, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { KResRestaurant } from '../../models/restaurant.model';
 import { KRES_KAFE_CONFIG } from './kafe-specifications/kafe-config.constants';
@@ -103,26 +103,11 @@ export class KResReservationComponent implements OnInit, AfterViewInit, OnDestro
     return this.generateDayTimeOptions(schedule);
   }
 
-  constructor(private router: Router, private reservationsService: KResReservationService, private cdr: ChangeDetectorRef) {
+  constructor(private router: Router, private reservationsService: KResReservationService, private ngZone: NgZone, private cdr: ChangeDetectorRef) {
     this.fieldToFocus = this.router.getCurrentNavigation()?.extras?.state?.['focusField'];
   }
 
   ngOnInit(): void {
-    if (this.reservationsService.reservationData) {
-      this.form.setValue({
-        date: this.reservationsService.reservationData.date,
-        time: `${this.reservationsService.reservationData.date.getHours()}:${this.reservationsService.reservationData.date.getMinutes()}`,
-        userName: this.reservationsService.reservationData.username,
-        email: this.reservationsService.reservationData.email,
-        phone: this.reservationsService.reservationData.phone,
-        people: this.reservationsService.reservationData.people,
-        children: this.reservationsService.reservationData.children,
-        region: this.reservationsService.reservationData.region.id,
-        smokers: this.reservationsService.reservationData.smokers,
-        birthday: this.reservationsService.reservationData.birthday,
-        birthdayName: this.reservationsService.reservationData.birthdayName,
-      });
-    }
     this.initFormSubscriptions();
     this.reservationsService.wholeRestaurantReservations$.pipe(takeUntil(this.destroy$)).subscribe(reservations => {
       const currentReservation = this.getCurrentReservationData();
@@ -171,6 +156,25 @@ export class KResReservationComponent implements OnInit, AfterViewInit, OnDestro
       case 'birthdayName':
         this.birthdayNameInput.nativeElement.focus();
         break;
+    }
+    if (this.reservationsService.reservationData) {
+        this.form.setValue({
+          date: this.reservationsService.reservationData.date,
+          time: `${this.reservationsService.reservationData.date.getHours()}:${String(this.reservationsService.reservationData.date.getMinutes()).padStart(2, '0')}`,
+          userName: this.reservationsService.reservationData.username,
+          email: this.reservationsService.reservationData.email,
+          phone: this.reservationsService.reservationData.phone,
+          people: this.reservationsService.reservationData.people,
+          children: this.reservationsService.reservationData.children,
+          region: this.reservationsService.reservationData.region.id,
+          smokers: this.reservationsService.reservationData.smokers,
+          birthday: this.reservationsService.reservationData.birthday,
+          birthdayName: this.reservationsService.reservationData.birthdayName,
+        }, {emitEvent: false});
+      setTimeout(() => {
+        // The ngneat/input-mask library interacts incorrectly with angular lifecyle hooks and it triggers the updateValue, thus the time field is cleared.
+        this.updateTime(`${this.reservationsService.reservationData.date.getHours()}:${String(this.reservationsService.reservationData.date.getMinutes()).padStart(2, '0')}`)
+      })
     }
   }
 
@@ -224,6 +228,7 @@ export class KResReservationComponent implements OnInit, AfterViewInit, OnDestro
       }
     });
     this.form.get('date').valueChanges.pipe(takeUntil(this.destroy$)).subscribe(() => {
+      console.log('CHIVATO')
       this.form.get('time').setValue(null);
     });
   }
