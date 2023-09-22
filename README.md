@@ -12,3 +12,6 @@ Execute the following commands:
 
 
 you can see the **application up and running at localhost:8080**
+
+**Please take into account that no designs were provided so I have not dedicated effort to SCSS. I have added only tests in the screen with the form (I couldn't spend more time), since it is the one with more logic and it can show how I can perform tests in the FE.**
+**I have also added extra logic that is not specified in the requirements in order to have the button to submit enabled, and clearing some fields that depend on others.**
