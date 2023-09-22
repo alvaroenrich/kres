@@ -1,15 +1,15 @@
-import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, NgZone, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { KResRestaurant } from '../../models/restaurant.model';
-import { KRES_KAFE_CONFIG } from './kafe-specifications/kafe-config.constants';
-import { KResCustomValidators } from './reservation.validators';
-import { Subject, interval, takeUntil } from 'rxjs';
 import { Router } from '@angular/router';
-import { KResReservationService } from '../../services/reservation.service';
-import { IKResReservationData } from '../../models/reservation.model';
 import { createMask } from '@ngneat/input-mask';
+import { Subject, interval, takeUntil } from 'rxjs';
+import { IKResReservationData } from '../../models/reservation.model';
+import { KResRestaurant } from '../../models/restaurant.model';
 import { KResDaySchedule } from '../../models/schedule/day-schedule.model';
 import { KResServingHours } from '../../models/schedule/serving-hours.model';
+import { KResReservationService } from '../../services/reservation.service';
+import { KRES_KAFE_CONFIG } from './kafe-specifications/kafe-config.constants';
+import { KResCustomValidators } from './reservation.validators';
 
 @Component({
   selector: 'kres-reservation',
@@ -103,7 +103,7 @@ export class KResReservationComponent implements OnInit, AfterViewInit, OnDestro
     return this.generateDayTimeOptions(schedule);
   }
 
-  constructor(private router: Router, private reservationsService: KResReservationService, private ngZone: NgZone, private cdr: ChangeDetectorRef) {
+  constructor(private router: Router, private reservationsService: KResReservationService, private cdr: ChangeDetectorRef) {
     this.fieldToFocus = this.router.getCurrentNavigation()?.extras?.state?.['focusField'];
   }
 
@@ -228,7 +228,6 @@ export class KResReservationComponent implements OnInit, AfterViewInit, OnDestro
       }
     });
     this.form.get('date').valueChanges.pipe(takeUntil(this.destroy$)).subscribe(() => {
-      console.log('CHIVATO')
       this.form.get('time').setValue(null);
     });
   }
@@ -302,7 +301,7 @@ export class KResReservationComponent implements OnInit, AfterViewInit, OnDestro
       && res.date.getMonth() === currentReservation.date.getMonth()
       && res.date.getDate() === currentReservation.date.getDate()
       && res.date.getHours() === currentReservation.date.getHours()
-      && res.date.getMinutes() ===currentReservation.date.getMinutes()
+      && res.date.getMinutes() === currentReservation.date.getMinutes()
     ).length < this.restaurant.regions.find(region => region.id === currentReservation.region.id)?.maxReservationsSimultaneously;
   }
 

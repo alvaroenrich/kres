@@ -5,7 +5,7 @@
   "scripts": {
     "start": "nx serve kres",
     "build": "nx run kres:build:production",
-    "test": "nx test"
+    "test": "nx test kres"
   },
   "private": true,
   "dependencies": {
@@ -55,6 +55,7 @@
     "jest-environment-jsdom": "^29.4.1",
     "jest-preset-angular": "~13.1.0",
     "jsonc-eslint-parser": "^2.1.0",
+    "ngx-translate-testing": "^7.0.0",
     "nx": "16.8.1",
     "nx-cloud": "latest",
     "prettier": "^2.6.2",
